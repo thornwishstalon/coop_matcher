@@ -10,16 +10,31 @@ import java.util.Set;
 
 import au.com.bytecode.opencsv.CSVReader;
 
+
+/**
+ * 
+ *
+ */
 public class DataHelper {
-	
+	/**
+	 * 
+	 */
 	private HashMap<String, Suspect> suspects;
 	
+	/**
+	 * 
+	 * @param dataFilePath
+	 */
 	public DataHelper(String dataFilePath){
 		
 		initSuspects(dataFilePath);
 		
 	}
 	
+	/**
+	 * 
+	 * @param dataFilePath
+	 */
 	private void initSuspects(String dataFilePath){
 		suspects= new HashMap<String, Suspect>();
 		try {
@@ -50,10 +65,23 @@ public class DataHelper {
 		}
 	}
 	
+	//##############################
+	//GETTER
+	//##############################
+	
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
 	public Suspect getByName(String name){
 		return suspects.get(name);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<Suspect> getEntries(){
 		ArrayList<Suspect> resultList= new ArrayList<Suspect>();
 		

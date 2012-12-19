@@ -48,7 +48,7 @@ public class Suspect {
 			
 			if(a == b){
 				directMatches++;
-			}else{
+			}else if(a!=b){
 				directMatches--;
 			}
 			
