@@ -35,10 +35,12 @@ public class Suspect {
 	/**
 	 * 
 	 * @param mate
-	 * @return
+	 * @return  s
 	 */
-	public int compareTo(Suspect mate){
-		int directMatches=0;
+	@Deprecated
+	public int matchTo(Suspect mate){
+		int directMatches=entries.length;
+		
 		int[] mateEntries= mate.getEntries();
 		int a=0,b=0;
 		
@@ -47,9 +49,9 @@ public class Suspect {
 			b=mateEntries[i];
 			
 			if(a == b){
-				directMatches++;
-			}else if(a!=b){
 				directMatches--;
+			}else if(a!=b){
+				directMatches++;
 			}
 			
 		}
@@ -77,6 +79,9 @@ public class Suspect {
 	public int[] getEntries() {
 		return entries;
 	}
+
+
+	
 	
 	
 	

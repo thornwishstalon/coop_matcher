@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="coop_matcher" default="dist" basedir=".">
+    <description>
+        Matching tool- Kooperatives Arbeiten VU
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src.dir" location="src"/>
+  <property name="build.dir" location="build"/>
+  <property name="lib.dir" location="lib"/>
+   <property name="data.dir" location="data"/>
+  <property name="main" value="Main"/>
+    
+    
+  <path id="project.classpath">
+	<fileset dir="${lib.dir}">
+		<include name="junit-4.7.jar"/>
+		<include name="opencsv-2.3.jar"/>
+	</fileset>
+        <pathelement location="${build.dir}"/>
+    </path>
+
+
+  <target name="compile" description="Compile project.">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="project.classpath" debug="true" deprecation="true" includeantruntime="false"/>
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}">
+                <include name="data/*.csv"/>      
+            </fileset>
+        </copy>
+    </target>
+    
+    <target name="clean" description="Clean project.">
+        <delete dir="${build.dir}"/>
+    </target>
+    
+    <target name="run" depends="compile">
+        <java classname="${main}" fork="true" classpathref="project.classpath">
+            <!--  <arg value="${server.port}"/>
+            <arg value="${analytics.bindingName}"/>
+            <arg value="${billing.bindingName}"/>-->
+        </java>
+    </target>
+  
+</project>

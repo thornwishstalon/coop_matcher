@@ -29,8 +29,8 @@ public class Suspect_TEST {
 		sus1= new Suspect(new String[]{"a","0","0","1","1","0","1","0","0","1",});
 		sus2= new Suspect(new String[]{"b","0","0","1","1","0","1","0","0","1",});
 		
-		int m1= sus1.compareTo(sus2);
-		int m2= sus2.compareTo(sus1);
+		int m1= sus1.matchTo(sus2);
+		int m2= sus2.matchTo(sus1);
 		
 		System.out.println(m1+" | "+m2);
 		
@@ -39,11 +39,24 @@ public class Suspect_TEST {
 	
 	@Test
 	public void compare_LOW_max(){
-		sus1= new Suspect(new String[]{"a","1","0","0","0","1","0","1","1","0",});
+		sus1= new Suspect(new String[]{"a","1","1","0","0","1","0","1","1","0",});
 		sus2= new Suspect(new String[]{"b","0","0","1","1","0","1","0","0","1",});
 		
-		int m1= sus1.compareTo(sus2);
-		int m2= sus2.compareTo(sus1);
+		int m1= sus1.matchTo(sus2);
+		int m2= sus2.matchTo(sus1);
+		
+		System.out.println(m1+" | "+m2);
+		
+		assertThat(m1, is(m2));
+	}
+	
+	@Test
+	public void compare_AVG(){
+		sus1= new Suspect(new String[]{"a","0","1","1","0","0","0","1","1","0",});
+		sus2= new Suspect(new String[]{"b","0","0","1","1","0","1","1","0","1",});
+		
+		int m1= sus1.matchTo(sus2);
+		int m2= sus2.matchTo(sus1);
 		
 		System.out.println(m1+" | "+m2);
 		

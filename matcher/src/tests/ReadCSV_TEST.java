@@ -27,4 +27,18 @@ public class ReadCSV_TEST {
 		//TODO
 	}
 	
+	@Test
+	public void read_TEST_file(){
+		helper= new DataHelper("data/TEST.csv");
+		
+		System.out.println(helper.getCategoriesAsString());
+	}
+	
+	@Test
+	public void read_TEST_file_withWeights(){
+		helper= new DataHelper("data/TEST.csv", "data/weights_TEST.csv");
+		
+		System.out.println(helper.getCategoriesAsString());
+	}
+	
 }

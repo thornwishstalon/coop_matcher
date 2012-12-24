@@ -1,7 +1,7 @@
-import java.io.IOException;
 
+
+import matcher.Matcher;
 import entity.DataHelper;
-
 
 public class Main {
 
@@ -12,9 +12,11 @@ public class Main {
 		//initialize internal DataStructure
 		
 		
-			DataHelper helper= new DataHelper("data/Interessen_Studenten.csv");
 		
-		
+			DataHelper helper= new DataHelper("data/Interessen_Studenten.csv", "data/weights_TEST.csv");
+			Matcher  matcher= new Matcher(helper);
+			matcher.setTargetName("Abila Christian");
+			matcher.createMatchFile();
 		
 	}
 
