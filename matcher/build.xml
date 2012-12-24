@@ -9,6 +9,11 @@
   <property name="lib.dir" location="lib"/>
    <property name="data.dir" location="data"/>
   <property name="main" value="Main"/>
+  
+  <!-- PROPERTIES  -->
+  <property name="dataset" value="data/Interessen_Studenten.csv"/>
+  <property name="weights" value="data/weights_default.csv"/>
+  <property name="target" value="Pechstein Fabian"/> <!-- !!!!<LASTNAME> <FIRST NAME>!!!!   -->
     
     
   <path id="project.classpath">
@@ -36,9 +41,9 @@
     
     <target name="run" depends="compile">
         <java classname="${main}" fork="true" classpathref="project.classpath">
-            <!--  <arg value="${server.port}"/>
-            <arg value="${analytics.bindingName}"/>
-            <arg value="${billing.bindingName}"/>-->
+            <arg value="${target}"/>
+            <arg value="${dataset}"/>
+            <arg value="${weights}"/>
         </java>
     </target>
   

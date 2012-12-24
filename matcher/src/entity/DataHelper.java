@@ -23,15 +23,19 @@ public class DataHelper {
 	private HashMap<String, Category> categories;
 	private int dataSetLength=0;
 	private Category[] categoryOrder; 
+
 	/**
 	 * 
 	 * @param dataFilePath
 	 */
+	@Deprecated
 	public DataHelper(String dataFilePath){
 
 		init(dataFilePath);
 
 	}
+	
+
 	/**
 	 * 
 	 * @param dataFilePath
@@ -42,7 +46,7 @@ public class DataHelper {
 		initWeights(weightsDataFilePath);
 		initOrder();
 		
-		//EBUG
+		//DEBUG
 		//System.out.println(categories.toString());
 
 	}
@@ -129,7 +133,6 @@ public class DataHelper {
 			
 			//System.out.println("setLenght: "+dataSetLength);
 			
-			System.out.println(nextLine.length);
 			while(i<nextLine.length){
 				s= nextLine[i];
 			

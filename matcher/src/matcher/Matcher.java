@@ -113,9 +113,9 @@ public class Matcher {
 			b=mateEntries[i];
 
 			if(a == b){
-				distance = (distance-1)*order[i].getWeight();
+				distance = distance-(1*order[i].getWeight());
 			}else {
-				distance = (distance+1)*order[i].getWeight();
+				distance = distance+(1*order[i].getWeight());
 			}
 		}
 		return distance;

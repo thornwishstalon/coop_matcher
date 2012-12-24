@@ -10,14 +10,32 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		//initialize internal DataStructure
+		DataHelper helper=null;
+
+
+		String target= args[0];
+		String data= args[1];
+
+		System.out.println("TARGET: "+target);
+		System.out.println("DATA: "+data);
+
+		String weights = args[2];
+		System.out.println("WEIGHTS: "+weights);
 		
 		
 		
-			DataHelper helper= new DataHelper("data/Interessen_Studenten.csv", "data/weights_TEST.csv");
-			Matcher  matcher= new Matcher(helper);
-			matcher.setTargetName("Abila Christian");
-			matcher.createMatchFile();
 		
+		helper= new DataHelper(data, weights);
+
+		//let the fun begin
+		Matcher  matcher= new Matcher(helper);
+
+		//TODO
+		matcher.setTargetName(target);
+
+		//write output
+		matcher.createMatchFile();
+
 	}
 
 }
