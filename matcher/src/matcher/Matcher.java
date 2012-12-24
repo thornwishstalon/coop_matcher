@@ -105,12 +105,12 @@ public class Matcher {
 
 		float distance=target.getEntries().length;
 
-		int[] mateEntries= suspect.getEntries();
+		int[] susEntries= suspect.getEntries();
 		int a=0,b=0;
 
 		for(int i=0; i<target.getEntries().length; i++){
 			a=target.getEntries()[i];
-			b=mateEntries[i];
+			b=susEntries[i];
 
 			if(a == b){
 				distance = distance-(1*order[i].getWeight());
