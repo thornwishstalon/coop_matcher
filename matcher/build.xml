@@ -13,8 +13,12 @@
   <!-- PROPERTIES  -->
   <property name="dataset" value="data/Interessen_Studenten.csv"/>
   <property name="weights" value="data/weights_default.csv"/>
+  
+  <!-- EDIT TARGET -->
+  <!-- ################################## -->
   <property name="target" value="Pechstein Fabian"/> <!-- !!!!<LASTNAME> <FIRST NAME>!!!!   -->
-    
+  <!-- ################################## -->
+  <!-- EDIT TARGET -->  
     
   <path id="project.classpath">
 	<fileset dir="${lib.dir}">
