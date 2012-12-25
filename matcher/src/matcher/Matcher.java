@@ -40,6 +40,7 @@ public class Matcher {
 	 */
 	public void createMatchFile(){
 		if(targetName.isEmpty()){
+			System.out.println("Specify a Target!");
 			return;
 		}
 		//System.out.println(createFileName());
@@ -47,8 +48,10 @@ public class Matcher {
 
 		Suspect target=helper.getByName(targetName);
 
-		if(target==null)
+		if(target==null){
+			System.out.println("Target in data-set not found!");
 			return;
+		}
 
 
 
