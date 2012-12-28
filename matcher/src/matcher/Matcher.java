@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -67,16 +68,14 @@ public class Matcher {
 					matches.add(new MatcherSuspect(s.getName(), match(target, s)));
 			}
 		} else {
-			int i = helper.getEntries().size()/2;
+			List<Suspect> suspects = helper.getEntries();
 			for(Suspect t: helper.getEntries()){
-				i--;
-				for (Suspect s : helper.getEntries()) {
-					if (!s.getName().equals(t.getName()))
-						matches.add(new MatcherSuspect(s.getName() + " - " + t.getName(), match(t, s)));
-				}
-				if(i==0){
-					break;
-				}
+				for (Suspect s : suspects) {
+					if (!s.getName().equals(t.getName())){
+						matches.add(new MatcherSuspect(s.getName() + " - " + t.getName(), match(t, s)));						
+					}					
+				}	
+				suspects.remove(0);	//the target gets removed from the inner loop
 			}
 		}
 
