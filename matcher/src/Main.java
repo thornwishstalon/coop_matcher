@@ -15,15 +15,12 @@ public class Main {
 
 		String target= args[0];
 		String data= args[1];
-
-		System.out.println("TARGET: "+target);
-		System.out.println("DATA: "+data);
-
 		String weights = args[2];
+		
+		System.out.println("TARGET: "+target);
+		System.out.println("DATA: "+data);		
 		System.out.println("WEIGHTS: "+weights);
-		
-		
-		
+				
 		
 		helper= new DataHelper(data, weights);
 

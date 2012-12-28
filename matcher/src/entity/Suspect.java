@@ -37,7 +37,6 @@ public class Suspect {
 	 * @param mate
 	 * @return  s
 	 */
-	@Deprecated
 	public int matchTo(Suspect mate){
 		int directMatches=entries.length;
 		
@@ -79,12 +78,4 @@ public class Suspect {
 	public int[] getEntries() {
 		return entries;
 	}
-
-
-	
-	
-	
-	
-	
-	
 }
