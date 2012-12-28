@@ -8,19 +8,16 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 
-import entity.DataHelper;
 import entity.Suspect;
 
 public class Suspect_TEST {
 	private Suspect sus1=null;
 	private Suspect sus2=null;
-	private DataHelper helper=null;
 	
 	@After
 	public void tearDown(){
 		sus1=null;
 		sus2=null;
-		helper=null;
 	}
 	
 	
