@@ -28,7 +28,6 @@ public class DataHelper {
 	 * 
 	 * @param dataFilePath
 	 */
-	@Deprecated
 	public DataHelper(String dataFilePath){
 
 		init(dataFilePath);

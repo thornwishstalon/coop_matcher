@@ -22,6 +22,12 @@ public class Matcher {
 	private DataHelper helper=null;
 	private String targetName="";
 	private ArrayList<MatcherSuspect> matches;
+	/*
+	 * if this is true Matcher is matching one specific target
+	 * towards all other, if it is false, all entries are used as target
+	 * towards all other.
+	 */
+	private boolean specific = true;
 	
 	public Matcher(DataHelper helper){
 		this.helper=helper;
@@ -39,28 +45,39 @@ public class Matcher {
 	 * 
 	 */
 	public void createMatchFile(){
-		if(targetName.isEmpty()){
-			System.out.println("Specify a Target!");
-			return;
+		Suspect target = null;
+		
+		if (targetName.isEmpty() || targetName.equals("*")) {
+			specific = false;
+		} else {
+
+			target = helper.getByName(targetName);
+
+			if (target == null) {
+				System.out.println("Target in data-set not found!");
+				return;
+			}
 		}
-		//System.out.println(createFileName());
 
 
-		Suspect target=helper.getByName(targetName);
-
-		if(target==null){
-			System.out.println("Target in data-set not found!");
-			return;
-		}
-
-
-
-
-		// match each entry towards the target
-		for(Suspect s: helper.getEntries()){
-			if(!s.getName().equals(target.getName()))
-				matches.add(new MatcherSuspect(s.getName(), match(target, s)));
-
+		if (specific) {
+			// match each entry towards the target
+			for (Suspect s : helper.getEntries()) {
+				if (!s.getName().equals(target.getName()))
+					matches.add(new MatcherSuspect(s.getName(), match(target, s)));
+			}
+		} else {
+			int i = helper.getEntries().size()/2;
+			for(Suspect t: helper.getEntries()){
+				i--;
+				for (Suspect s : helper.getEntries()) {
+					if (!s.getName().equals(t.getName()))
+						matches.add(new MatcherSuspect(s.getName() + " - " + t.getName(), match(t, s)));
+				}
+				if(i==0){
+					break;
+				}
+			}
 		}
 		
 		//order result list by distance
