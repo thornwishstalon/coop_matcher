@@ -204,7 +204,7 @@ public class DataHelper {
 	 * @return
 	 */
 	public List<Suspect> getEntries(){
-		ArrayList<Suspect> resultList= new ArrayList<Suspect>();
+		List<Suspect> resultList= new ArrayList<Suspect>();
 
 		Set<String> keys= suspects.keySet();
 		for(String key: keys){
