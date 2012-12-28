@@ -18,8 +18,8 @@ public class MatcherSuspect implements Comparable<MatcherSuspect> {
 		if(sus.getDistance()== this.distance)
 			return 0;
 		else if(sus.getDistance() < this.distance)
-			return 1;
-		else return -1;
+			return -1;
+		else return 1;
 	}
 	
 	public String[] toLine(){

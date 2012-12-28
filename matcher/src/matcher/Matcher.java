@@ -28,7 +28,7 @@ public class Matcher {
 	 * towards all other.
 	 */
 	private boolean specific = true;
-	
+
 	public Matcher(DataHelper helper){
 		this.helper=helper;
 		matches= new ArrayList<MatcherSuspect>();
@@ -46,7 +46,7 @@ public class Matcher {
 	 */
 	public void createMatchFile(){
 		Suspect target = null;
-		
+
 		if (targetName.isEmpty() || targetName.equals("*")) {
 			specific = false;
 		} else {
@@ -79,10 +79,10 @@ public class Matcher {
 				}
 			}
 		}
-		
+
 		//order result list by distance
 		Collections.sort(matches);
-		
+
 		//write to file
 		writeFile(createFileName(), matches);
 
@@ -104,7 +104,7 @@ public class Matcher {
 			for(MatcherSuspect s: matches){
 				writer.writeNext(s.toLine());
 			}
-			
+
 			//CLOSING
 			writer.close();
 
@@ -123,7 +123,7 @@ public class Matcher {
 	private float match(Suspect target,Suspect suspect){
 		Category[] order= helper.getCategoryOrder();
 
-		float distance=target.getEntries().length;
+		float distance= 0;//target.getEntries().length;
 
 		int[] susEntries= suspect.getEntries();
 		int a=0,b=0;
@@ -132,11 +132,26 @@ public class Matcher {
 			a=target.getEntries()[i];
 			b=susEntries[i];
 
+			if(a==1 && b==1){
+				distance= distance+(3*order[i].getWeight());
+			}
+			else if(a==0 && b==0){
+				distance= distance+(0*order[i].getWeight());
+			}
+			else if(a==1 && b==0){
+				distance= distance-(1*order[i].getWeight());
+			}
+			else if(a==0 && b==1){
+				distance= distance-(1*order[i].getWeight());
+			}
+
+			/*
 			if(a == b){
 				distance = distance-(1*order[i].getWeight());
 			}else {
 				distance = distance+(1*order[i].getWeight());
 			}
+			 */
 		}
 		return distance;
 	}

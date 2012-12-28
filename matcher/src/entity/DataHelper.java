@@ -158,7 +158,8 @@ public class DataHelper {
 				
 				i++;
 			}
-			categories.put(currentCat.getDescription(), currentCat);
+			if(currentCat!=null)
+				categories.put(currentCat.getDescription(), currentCat);
 			
 			
 
